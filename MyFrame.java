@@ -18,10 +18,10 @@ public class MyFrame extends JFrame{
 	final int height = 600;
 	int randomNumber = (int)((Math.random()*1023)+1);
 	
-	// BULB AREA
 	Bulb[] bulb = new Bulb[10];
 	JButton submit_button;
 	JLabel message;
+	
 	public MyFrame(){
 		// JPANEL WINDOW
 		// DON'T TOUCH IT
@@ -31,7 +31,6 @@ public class MyFrame extends JFrame{
 		
 		// RAND NUM HERE AND CHECK WIN
 		JPanel upper_panel = new JPanel();
-//		upper_panel.setLayout(new GridLayout(2, 0));
 		upper_panel.setLayout(new BorderLayout());
 		upper_panel.setBackground(Color.gray);
 		upper_panel.setPreferredSize(new Dimension(width, height/2));
@@ -55,9 +54,7 @@ public class MyFrame extends JFrame{
 		submit_button.setBackground(new Color(233,215,0));
 		submit_button.setBorder(BorderFactory.createRaisedBevelBorder());
 		JPanel button_panel = new JPanel();
-//		button_panel.setPreferredSize(new Dimension(150, 60));
 		button_panel.setOpaque(false);
-//		button_panel.setLayout(new BorderLayout());
 
 		// RAND NUMBER JLABEL
 		JLabel number = new JLabel();
@@ -70,7 +67,7 @@ public class MyFrame extends JFrame{
 		message.setForeground(Color.darkGray);
 		message.setFont(new Font("MV Boli", Font.BOLD, 45));
 		
-		// ADDING SHIT INTO THE FRAME AND PANEL
+		// ADDING THINGS INTO THE FRAME AND PANEL
 		for (int i = 0; i < 10; i++) {
 			bulb[i] = new Bulb();
 			bulb_panel.add(bulb[i]);
