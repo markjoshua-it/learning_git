@@ -59,29 +59,6 @@ public class MyFrame extends JFrame{
 		button_panel.setOpaque(false);
 //		button_panel.setLayout(new BorderLayout());
 
-		// BUTTON HOVER EFFECT
-		submit_button.addMouseListener(new MouseListener(){
-			@Override
-			public void mouseClicked(MouseEvent e) {}
-
-			@Override
-			public void mousePressed(MouseEvent e) {}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				submit_button.setBackground(new Color(248,237,98));
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				submit_button.setBackground(new Color(233,215,0));
-			}
-		});
-
-		
 		// RAND NUMBER JLABEL
 		JLabel number = new JLabel();
 		number.setText(randomNumber+"");
@@ -112,20 +89,33 @@ public class MyFrame extends JFrame{
 		setResizable(false);
 		setVisible(true);
 		pack();
-		checkAnswer();
+		buttonAction();
 	}
 	
-	public void checkAnswer(){
-		submit_button.addActionListener(e ->{
-			int[] binary_count = {512,256,128,64,32,16,8,4,2,1};
-			int count = 0;
-			for(int i = 0; i < 10; i++){
-				if (bulb[i].isSelected()) {
-					count+=binary_count[i];
+	public void buttonAction(){
+		submit_button.addMouseListener(new MouseListener(){
+			@Override
+			public void mouseClicked(MouseEvent e) {}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				int[] binary_count = {512,256,128,64,32,16,8,4,2,1};
+				int count = 0;
+				for(int i = 0; i < 10; i++){
+					if (bulb[i].isSelected()) {
+						count+=binary_count[i];
+					}
 				}
+				if(count==randomNumber)message.setText(String.format("Your answer %d is CORRECT! :)", count));
+				else message.setText(String.format("Your answer %d is WRONG! :(", count));
 			}
-			if(count==randomNumber)message.setText(String.format("Your answer %d is CORRECT! :)", count));
-			else message.setText(String.format("Your answer %d is WRONG! :(", count));
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {}
+			@Override
+			public void mouseEntered(MouseEvent e) { submit_button.setBackground(new Color(248,237,98)); }
+			@Override
+			public void mouseExited(MouseEvent e) { submit_button.setBackground(new Color(233,215,0)); }
 		});
 	}
 }
