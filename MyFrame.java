@@ -90,9 +90,7 @@ public class MyFrame extends JFrame{
 				int[] binary_count = {512,256,128,64,32,16,8,4,2,1};
 				int count = 0;
 				for(int i = 0; i < 10; i++){
-					if (bulb[i].isSelected()) {
-						count+=binary_count[i];
-					}
+					if (bulb[i].isSelected()) count+=binary_count[i];
 				}
 				if(count==randomNumber)message.setText(String.format("Your answer %d is CORRECT! :)", count));
 				else message.setText(String.format("Your answer %d is WRONG! :(", count));
